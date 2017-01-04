@@ -70,3 +70,6 @@
     artifact: /.*\.nupkg/
     on:
       branch: netcore
+
+  skip_commits:
+    message: /\[(ci[-\s])?skip([-\s]ci)?\]/
