@@ -1,0 +1,32 @@
+name: .NET Core
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macOS-latest, ubuntu-latest, windows-latest]
+        dotnet: [ '2.2.108', '3.0.100', '3.1.100-preview1-014459' ]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ matrix.dotnet }}
+    - name: Build with dotnet
+      run: dotnet build ./src/AspNetCore.Identity.DocumentDB -c Release
+    - name: Test with dotnet
+      env:
+        TEST_ARGS: --filter Category!=BreaksUnix
+      run: dotnet test ./test/CoreTests -c Release $TEST_ARGS
+           dotnet test ./test/CoreIntegrationTests -c Release $TEST_ARGS
+    - name: Pack with dotnet
+      run: dotnet pack ./src/AspNetCore.Identity.DocumentDB -c Release -o artifacts
+    - uses: actions/upload-artifact@master
+      with:
+        name: artifacts
+        path: artifacts
