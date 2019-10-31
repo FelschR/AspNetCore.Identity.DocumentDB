@@ -24,18 +24,21 @@ jobs:
       if: matrix.os == 'windows-latest'
   
     - name: Build with dotnet (Unix)
-      run: dotnet build ./src/AspNetCore.Identity.DocumentDB -c Release -f netstandard1.6
-           dotnet build ./src/AspNetCore.Identity.DocumentDB -c Release -f netstandard2.0
+      run: |
+        dotnet build ./src/AspNetCore.Identity.DocumentDB -c Release -f netstandard1.6
+        dotnet build ./src/AspNetCore.Identity.DocumentDB -c Release -f netstandard2.0
       if: matrix.os == 'ubuntu-latest' || matrix.os == 'macOS-latest'
   
     - name: Test with dotnet (Windows)
-      run: dotnet test ./test/CoreTests -c Release $TEST_ARGS
-           dotnet test ./test/CoreIntegrationTests -c Release -f netcoreapp2.0
+      run: |
+        dotnet test ./test/CoreTests -c Release $TEST_ARGS
+        dotnet test ./test/CoreIntegrationTests -c Release -f netcoreapp2.0
       if: matrix.os == 'windows-latest'
   
     - name: Test with dotnet (Unix)
-      run: dotnet test ./test/CoreTests -c Release $TEST_ARGS
-           dotnet test ./test/CoreIntegrationTests -c Release -f netcoreapp2.0 --filter Category!=BreaksUnix
+      run: |
+        dotnet test ./test/CoreTests -c Release $TEST_ARGS
+        dotnet test ./test/CoreIntegrationTests -c Release -f netcoreapp2.0 --filter Category!=BreaksUnix
       if: matrix.os == 'ubuntu-latest' || matrix.os == 'macOS-latest'
  
     - name: Pack with dotnet
