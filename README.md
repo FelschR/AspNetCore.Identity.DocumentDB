@@ -1,6 +1,8 @@
 
 ## AspNetCore.Identity.DocumentDB [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/b27a4wvconad0c5k?svg=true)](https://ci.appveyor.com/project/FelschR/aspnetcore-identity-documentdb) [![Travis CI build status](https://travis-ci.org/FelschR/AspNetCore.Identity.DocumentDB.svg?branch=master)](https://travis-ci.org/FelschR/AspNetCore.Identity.DocumentDB?branch=master)
 
+**Attention:** This library is no longer maintained. Please use an alternative such as [CodeKoenig/AspNetCore.Identity.DocumentDb](https://github.com/codekoenig/AspNetCore.Identity.DocumentDb).
+
 This is a DocumentDB provider for the ASP.NET Core Identity framework. This was ported from the MongoDB ASP.NET Core Identity framework (Microsoft.AspNetCore.Identity.MongoDB NuGet package) by g0t4.
 
 It's fully compatible with ASP.NET Core 1.0 & 2.0 and can also be used within standard .NET Framework projects.
